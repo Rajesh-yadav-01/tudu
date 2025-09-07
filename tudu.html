@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #4df7d8, #001c97);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .todo-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      width: 350px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .input-section {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: not-allowed;
+    }
+
+    .task-list {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    .task-list li {
+      padding: 10px;
+      margin-bottom: 8px;
+      background-color: #f2f2f2;
+      border-radius: 6px;
+    }
+
+    .note {
+      font-size: 0.8em;
+      color: #777;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="todo-container">
+    <h1>My To-Do List</h1>
+    <div class="input-section">
+      <input id="taskInput" type="text" placeholder="Enter a task..." />
+      <button id="addTaskBtn" style="cursor: pointer;">Add Task</button>
+    </div>
+    <ul class="task-list" id="taskList">
+      <!-- Tasks will be added here -->      
+    </ul>
+    <script>
+      const addTaskBtn = document.getElementById('addTaskBtn');
+      const taskInput = document.getElementById('taskInput');
+      const taskList = document.getElementById('taskList');
+
+      addTaskBtn.addEventListener('click', function() {
+      const task = taskInput.value.trim();
+      if (task) {
+        const li = document.createElement('li');
+        li.textContent = task;
+        taskList.appendChild(li);
+        taskInput.value = '';
+      }
+      });
+
+      taskInput.addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        addTaskBtn.click();
+      }
+      });
+    </script>
+    </ul>
+    <p class="note">basic todo web</p>
+  </div>
+</body>
+</html>
